@@ -1,16 +1,3 @@
-# django_project
-
-# running container with docker compose
-Make sure you have docker installed:
-```
-docker-compose --version
-```
-```
-cd django_project
-```
-```
-docker compose up --build
-```
-
-
-
+# Docker
+TP Programmation Distribuée
+![Texte alternatif](capture.png "Titre de l'image").
