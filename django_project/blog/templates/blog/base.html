@@ -50,7 +50,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
       <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="{% url 'blog-index' %}" >Start Bootstrap</a>
+        <a class="navbar-brand" href="{% url 'blog-index' %}" >Blog</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -85,11 +85,22 @@
                 >Contact</a
               >
             </li>
+            {% if user.is_authenticated %}
+              
+            {% else %}
             <li class="nav-item">
-              <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'login' %}"
+              <a class="nav-link px-lg-3 py-3 py-lg-4" href="#"
                 >Login</a
               >
             </li>
+            {% comment %} <li class="nav-item">
+              <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'register' %}"
+                >Register</a
+              >
+            </li> {% endcomment %}
+            {% endif %}
+
+            
           </ul>
         </div>
       </div>
