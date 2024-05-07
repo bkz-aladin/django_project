@@ -1,23 +1,25 @@
-# Base image
-FROM python:3
+# base image  
+FROM python:3.11 
+# setup environment variable  
+ENV DockerHOME=/home/app/webapp  
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+# set work directory  
+RUN mkdir -p $DockerHOME  
 
-WORKDIR /code
+# where your code lives  
+WORKDIR $DockerHOME  
+
+# set environment variables  
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1  
 
 # install dependencies  
 RUN pip install --upgrade pip  
 
-# Copy the requirements file to the working directory
-COPY requirements.txt .
-
-RUN pip install -r requirements.txt
-
-COPY . .
-
-# Expose port 8000 for the Django development server
-EXPOSE 5000
-
-# Start the Django development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:5000"]
+# copy whole project to your docker home directory. 
+COPY . $DockerHOME  
+# run this command to install all dependencies  
+RUN pip install -r requirements.txt  
+ 
+# start server  
+CMD python manage.py runserver 0.0.0.0:8000
