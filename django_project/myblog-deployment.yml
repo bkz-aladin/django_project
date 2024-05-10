@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myblog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myblog
+  template:
+    metadata:
+      labels:
+        app: myblog
+    spec:
+      containers:
+        - image: aladin64/myblog:1.1
+          imagePullPolicy: IfNotPresent
+          name: myblog
+      restartPolicy: Always
